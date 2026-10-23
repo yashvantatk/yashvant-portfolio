@@ -144,7 +144,7 @@ export const projects = [
     image: IMAGES.workspace,
     tech: ["React 19", "FastAPI", "C++", "YOLOv8"],
     github: "https://github.com/Mohit427/Aura-AI-Traffic",
-    demo: "https://aura-ai-rouge.vercel.app",
+    demo: "https://aura-ai-traffic.onrender.com/",
     featured: false,
   },
   {
