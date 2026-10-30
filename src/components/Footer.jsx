@@ -9,15 +9,15 @@ export default function Footer() {
   };
 
   return (
-    <footer data-testid="footer" className="relative overflow-hidden border-t border-zinc-800/70 px-4 sm:px-8 lg:px-12 pt-16 pb-8">
+    <footer data-testid="footer" className="relative overflow-hidden border-t border-zinc-800/70 px-4 sm:px-8 lg:px-12 pt-12 sm:pt-16 pb-8">
       <div className="mx-auto max-w-7xl">
-        <div className="flex flex-wrap items-end justify-between gap-8 mb-12">
+        <div className="flex flex-wrap items-end justify-between gap-6 sm:gap-8 mb-10 sm:mb-12">
           <div>
             <div className="flex items-center gap-4 mb-4">
               <Logo size={44} />
               <span className="font-code text-xs text-zinc-500">{profile.role}</span>
             </div>
-            <p className="font-display text-4xl sm:text-6xl font-extrabold tracking-tight text-zinc-800 select-none">
+            <p className="font-display text-[clamp(1.75rem,9vw,2.25rem)] sm:text-6xl leading-none font-extrabold tracking-tight text-zinc-800 select-none">
               {profile.name.toUpperCase()}
             </p>
           </div>
@@ -33,7 +33,7 @@ export default function Footer() {
           <p className="font-code text-xs text-zinc-600">
             © {new Date().getFullYear()} {profile.name} · Built with React
           </p>
-          <p className="font-code text-xs text-zinc-700">
+          <p className="font-code text-xs text-zinc-700 break-all">
             <span className="text-emerald-500/80">{profile.location}</span> · {profile.email}
           </p>
         </div>

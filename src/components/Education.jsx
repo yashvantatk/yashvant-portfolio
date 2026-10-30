@@ -4,7 +4,7 @@ import { education } from "@/data/portfolioData";
 
 export default function Education() {
   return (
-    <section id="education" data-testid="education-section" className="py-20 lg:py-32 px-4 sm:px-8 lg:px-12">
+    <section id="education" data-testid="education-section" className="py-16 sm:py-20 lg:py-32 px-4 sm:px-8 lg:px-12">
       <div className="mx-auto max-w-4xl">
         <Reveal>
           <SectionLabel index="05">Education</SectionLabel>
@@ -13,19 +13,19 @@ export default function Education() {
           </h2>
         </Reveal>
         <Reveal delay={0.1}>
-          <div className="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-8 lg:p-10 transition-colors hover:border-emerald-500/40">
-            <div className="flex flex-wrap items-start justify-between gap-6 mb-8">
+          <div className="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-5 sm:p-8 lg:p-10 transition-colors hover:border-emerald-500/40">
+            <div className="flex flex-wrap items-start justify-between gap-4 sm:gap-6 mb-6 sm:mb-8">
               <div className="flex items-start gap-4">
                 <span className="rounded-xl bg-emerald-500/10 border border-emerald-500/30 p-3">
                   <GraduationCap className="h-6 w-6 text-emerald-400" />
                 </span>
                 <div>
-                  <h3 className="font-display text-xl font-semibold text-zinc-50">{education.degree}</h3>
+                  <h3 className="font-display text-lg sm:text-xl font-semibold text-zinc-50">{education.degree}</h3>
                   <p className="text-sm text-zinc-400">{education.school}</p>
                   <p className="font-code text-xs text-zinc-500 mt-1">{education.period}</p>
                 </div>
               </div>
-              <div className="text-right">
+              <div className="pl-[60px] sm:pl-0 sm:text-right">
                 <p className="font-code text-[10px] uppercase tracking-widest text-zinc-500">GPA</p>
                 <p className="font-display text-2xl font-bold text-emerald-400">{education.gpa}</p>
               </div>

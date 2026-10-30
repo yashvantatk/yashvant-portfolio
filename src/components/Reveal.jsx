@@ -13,7 +13,7 @@ export const Reveal = ({ children, delay = 0, className, y = 32 }) => (
 );
 
 export const SectionLabel = ({ index, children }) => (
-  <p className="font-code text-xs uppercase tracking-[0.25em] text-emerald-400 mb-4">
+  <p className="font-code text-[11px] sm:text-xs uppercase tracking-[0.18em] sm:tracking-[0.25em] text-emerald-400 mb-4">
     <span className="text-zinc-600">{index} /</span> {children}
   </p>
 );

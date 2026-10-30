@@ -34,7 +34,7 @@ export default function Navbar() {
       }`}
       data-testid="navbar"
     >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-8 lg:px-12 py-4">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-8 lg:px-12 py-3 sm:py-4">
         <button
           data-testid="nav-logo-button"
           onClick={() => scrollToSection("hero")}
@@ -63,15 +63,16 @@ export default function Navbar() {
           <Button
             data-testid="nav-resume-button"
             onClick={downloadResume}
-            className="bg-emerald-500 text-zinc-950 hover:bg-emerald-400 hover:text-zinc-950 font-semibold rounded-full px-5 transition-transform hover:scale-105"
+            className="bg-emerald-500 text-zinc-950 hover:bg-emerald-400 hover:text-zinc-950 font-semibold rounded-full h-9 sm:h-10 px-4 sm:px-5 text-sm transition-transform sm:hover:scale-105"
           >
             <Download className="mr-2 h-4 w-4" /> Resume
           </Button>
           <button
             data-testid="nav-mobile-toggle"
-            className="lg:hidden text-zinc-300 p-2"
+            className="lg:hidden text-zinc-300 p-2 -mr-2"
             onClick={() => setOpen(!open)}
             aria-label="Toggle menu"
+            aria-expanded={open}
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -79,13 +80,13 @@ export default function Navbar() {
       </nav>
 
       {open && (
-        <div className="lg:hidden backdrop-blur-xl bg-zinc-950/95 border-b border-zinc-800/60 px-6 pb-6 pt-2 flex flex-col gap-4" data-testid="nav-mobile-menu">
+        <div className="lg:hidden backdrop-blur-xl bg-zinc-950/95 border-b border-zinc-800/60 px-4 sm:px-8 pb-4 pt-1 flex flex-col" data-testid="nav-mobile-menu">
           {links.map((l) => (
             <button
               key={l.id}
               data-testid={`nav-mobile-link-${l.id}`}
               onClick={() => { setOpen(false); scrollToSection(l.id); }}
-              className="text-left font-code text-sm uppercase tracking-widest text-zinc-300 hover:text-emerald-400 transition-colors"
+              className="text-left py-3 border-b border-zinc-800/60 last:border-b-0 font-code text-sm uppercase tracking-widest text-zinc-300 hover:text-emerald-400 transition-colors"
             >
               {l.label}
             </button>

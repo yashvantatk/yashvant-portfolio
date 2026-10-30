@@ -5,12 +5,12 @@ import { Reveal, SectionLabel } from "@/components/Reveal";
 import { experiences, achievements } from "@/data/portfolioData";
 
 const tabs = [
-  { id: "roles", label: "Roles & Leadership", icon: Briefcase },
-  { id: "awards", label: "Awards & Achievements", icon: Award },
+  { id: "roles", label: "Roles & Leadership", short: "Roles", icon: Briefcase },
+  { id: "awards", label: "Awards & Achievements", short: "Awards", icon: Award },
 ];
 
 const Timeline = ({ items, type }) => (
-  <div className="relative border-l border-zinc-800 pl-8 space-y-10">
+  <div className="relative border-l border-zinc-800 pl-6 sm:pl-8 space-y-8 sm:space-y-10">
     {items.map((item, i) => (
       <motion.div
         key={item.title || item.role}
@@ -20,9 +20,9 @@ const Timeline = ({ items, type }) => (
         className="relative"
         data-testid={`timeline-item-${type}-${i}`}
       >
-        <span className="absolute -left-[37px] top-1.5 h-2.5 w-2.5 rounded-full bg-emerald-500 shadow-[0_0_12px_rgba(16,185,129,0.8)]" />
-        <div className="flex flex-wrap items-center gap-3 mb-1">
-          <h3 className="font-display text-lg font-semibold text-zinc-50">
+        <span className="absolute -left-[29px] sm:-left-[37px] top-1.5 h-2.5 w-2.5 rounded-full bg-emerald-500 shadow-[0_0_12px_rgba(16,185,129,0.8)]" />
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-1">
+          <h3 className="font-display text-base sm:text-lg font-semibold text-zinc-50">
             {type === "roles" ? item.role : item.title}
           </h3>
           <span className="rounded-full border border-zinc-800 bg-zinc-900 px-3 py-0.5 font-code text-[10px] uppercase tracking-widest text-emerald-300">
@@ -44,7 +44,7 @@ const Timeline = ({ items, type }) => (
             </div>
           </>
         ) : (
-          <div className="flex items-start gap-3">
+          <div className="flex flex-col items-start gap-2 sm:flex-row sm:gap-3">
             <p className="text-sm text-zinc-400">{item.description}</p>
             <span className="shrink-0 rounded-full bg-amber-500/10 border border-amber-500/30 px-2.5 py-0.5 font-code text-[10px] uppercase tracking-widest text-amber-300">
               {item.tag}
@@ -60,7 +60,7 @@ export default function Experience() {
   const [tab, setTab] = useState("roles");
 
   return (
-    <section id="experience" data-testid="experience-section" className="py-20 lg:py-32 px-4 sm:px-8 lg:px-12 bg-zinc-950/40">
+    <section id="experience" data-testid="experience-section" className="py-16 sm:py-20 lg:py-32 px-4 sm:px-8 lg:px-12 bg-zinc-950/40">
       <div className="mx-auto max-w-4xl">
         <Reveal>
           <SectionLabel index="04">Experience & Achievements</SectionLabel>
@@ -70,17 +70,19 @@ export default function Experience() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div className="mb-12 inline-flex rounded-full border border-zinc-800 bg-zinc-900/60 p-1">
-            {tabs.map(({ id, label, icon: Icon }) => (
+          <div className="mb-10 sm:mb-12 grid w-full grid-cols-2 sm:inline-flex sm:w-auto rounded-full border border-zinc-800 bg-zinc-900/60 p-1">
+            {tabs.map(({ id, label, short, icon: Icon }) => (
               <button
                 key={id}
                 data-testid={`experience-tab-${id}`}
                 onClick={() => setTab(id)}
-                className={`flex items-center gap-2 rounded-full px-5 py-2 text-sm font-medium transition-colors ${
+                className={`flex items-center justify-center gap-2 rounded-full px-3 sm:px-5 py-2.5 sm:py-2 text-sm font-medium transition-colors ${
                   tab === id ? "bg-emerald-500 text-zinc-950" : "text-zinc-400 hover:text-zinc-200"
                 }`}
               >
-                <Icon className="h-4 w-4" /> {label}
+                <Icon className="h-4 w-4" />
+                <span className="sm:hidden">{short}</span>
+                <span className="hidden sm:inline">{label}</span>
               </button>
             ))}
           </div>

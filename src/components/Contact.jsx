@@ -36,8 +36,8 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" data-testid="contact-section" className="py-20 lg:py-32 px-4 sm:px-8 lg:px-12 bg-zinc-950/40">
-      <div className="mx-auto max-w-7xl grid gap-14 lg:grid-cols-2">
+    <section id="contact" data-testid="contact-section" className="py-16 sm:py-20 lg:py-32 px-4 sm:px-8 lg:px-12 bg-zinc-950/40">
+      <div className="mx-auto max-w-7xl grid gap-10 sm:gap-14 lg:grid-cols-2">
         <Reveal>
           <SectionLabel index="06">Contact</SectionLabel>
           <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-zinc-50 mb-6">
@@ -49,11 +49,11 @@ export default function Contact() {
           <button
             data-testid="copy-email-button"
             onClick={copyEmail}
-            className="mb-8 inline-flex items-center gap-3 rounded-full border border-zinc-800 bg-zinc-900/60 px-5 py-2.5 font-code text-sm text-zinc-300 hover:border-emerald-500/50 hover:text-emerald-300 transition-colors"
+            className="mb-8 inline-flex max-w-full items-center gap-3 rounded-full border border-zinc-800 bg-zinc-900/60 px-4 sm:px-5 py-2.5 font-code text-xs sm:text-sm break-all text-zinc-300 hover:border-emerald-500/50 hover:text-emerald-300 transition-colors"
           >
             {profile.email} <Copy className="h-4 w-4" />
           </button>
-          <div className="grid grid-cols-2 gap-3 max-w-sm">
+          <div className="grid grid-cols-2 gap-3 sm:max-w-sm">
             {socials.map(({ id, label, href, icon: Icon }) => (
               <a
                 key={id}
@@ -73,7 +73,7 @@ export default function Contact() {
           <form
             data-testid="contact-form"
             onSubmit={submit}
-            className="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-6 sm:p-8 space-y-4"
+            className="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-5 sm:p-8 space-y-4"
           >
             <div className="grid gap-4 sm:grid-cols-2">
               <Input
@@ -82,7 +82,7 @@ export default function Contact() {
                 placeholder="Your name"
                 value={form.name}
                 onChange={update("name")}
-                className="border-zinc-800 bg-zinc-950/60 text-zinc-100 placeholder:text-zinc-600 focus-visible:ring-emerald-500"
+                className="h-11 border-zinc-800 bg-zinc-950/60 text-zinc-100 placeholder:text-zinc-600 focus-visible:ring-emerald-500"
               />
               <Input
                 data-testid="contact-email-input"
@@ -91,7 +91,7 @@ export default function Contact() {
                 placeholder="Your email"
                 value={form.email}
                 onChange={update("email")}
-                className="border-zinc-800 bg-zinc-950/60 text-zinc-100 placeholder:text-zinc-600 focus-visible:ring-emerald-500"
+                className="h-11 border-zinc-800 bg-zinc-950/60 text-zinc-100 placeholder:text-zinc-600 focus-visible:ring-emerald-500"
               />
             </div>
             <Input
@@ -99,7 +99,7 @@ export default function Contact() {
               placeholder="Subject (optional)"
               value={form.subject}
               onChange={update("subject")}
-              className="border-zinc-800 bg-zinc-950/60 text-zinc-100 placeholder:text-zinc-600 focus-visible:ring-emerald-500"
+              className="h-11 border-zinc-800 bg-zinc-950/60 text-zinc-100 placeholder:text-zinc-600 focus-visible:ring-emerald-500"
             />
             <Textarea
               data-testid="contact-message-input"

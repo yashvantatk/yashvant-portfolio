@@ -14,10 +14,11 @@ const ProjectCard = ({ project, index, onOpen }) => (
     transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
     data-testid={`project-card-${index}`}
     onClick={() => onOpen(project)}
-    className={`group relative cursor-pointer overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900/40 transition-colors hover:border-emerald-500/40 ${project.featured ? "sm:col-span-2" : ""
-      }`}
+    className={`group relative cursor-pointer overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900/40 transition-colors hover:border-emerald-500/40 ${
+      project.featured ? "sm:col-span-2" : ""
+    }`}
   >
-    <div className={`relative overflow-hidden ${project.featured ? "h-56 sm:h-64" : "h-44"}`}>
+    <div className={`relative overflow-hidden ${project.featured ? "h-48 sm:h-64" : "h-44"}`}>
       <img
         src={project.image}
         alt={project.title}
@@ -29,7 +30,7 @@ const ProjectCard = ({ project, index, onOpen }) => (
         {project.category}
       </span>
     </div>
-    <div className="p-6">
+    <div className="p-5 sm:p-6">
       <div className="flex items-start justify-between gap-3">
         <div>
           <h3 className="font-display text-xl font-semibold tracking-tight text-zinc-50 group-hover:text-emerald-300 transition-colors">
@@ -57,7 +58,7 @@ export default function Projects() {
   const visible = projects.filter((p) => filter === "All" || p.category === filter);
 
   return (
-    <section id="projects" data-testid="projects-section" className="py-20 lg:py-32 px-4 sm:px-8 lg:px-12">
+    <section id="projects" data-testid="projects-section" className="py-16 sm:py-20 lg:py-32 px-4 sm:px-8 lg:px-12">
       <div className="mx-auto max-w-7xl">
         <Reveal>
           <SectionLabel index="03">Projects</SectionLabel>
@@ -67,16 +68,17 @@ export default function Projects() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div className="mb-10 flex flex-wrap gap-3">
+          <div className="mb-8 sm:mb-10 -mx-4 px-4 flex gap-2 overflow-x-auto no-scrollbar sm:mx-0 sm:px-0 sm:flex-wrap sm:gap-3 sm:overflow-visible">
             {projectFilters.map((f) => (
               <button
                 key={f}
                 data-testid={`project-filter-${f.toLowerCase().replace(/[^a-z]/g, "-")}`}
                 onClick={() => setFilter(f)}
-                className={`rounded-full border px-4 py-1.5 font-code text-xs uppercase tracking-widest transition-colors ${filter === f
-                  ? "border-emerald-500 bg-emerald-500/10 text-emerald-300"
-                  : "border-zinc-800 text-zinc-500 hover:border-zinc-600 hover:text-zinc-300"
-                  }`}
+                className={`shrink-0 rounded-full border px-4 py-2 sm:py-1.5 font-code text-xs uppercase tracking-widest transition-colors ${
+                  filter === f
+                    ? "border-emerald-500 bg-emerald-500/10 text-emerald-300"
+                    : "border-zinc-800 text-zinc-500 hover:border-zinc-600 hover:text-zinc-300"
+                }`}
               >
                 {f}
               </button>
@@ -84,7 +86,7 @@ export default function Projects() {
           </div>
         </Reveal>
 
-        <motion.div layout className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <motion.div layout className="grid gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
           <AnimatePresence mode="popLayout">
             {visible.map((p) => (
               <ProjectCard key={p.title} project={p} index={projects.indexOf(p)} onOpen={setActive} />
@@ -94,13 +96,13 @@ export default function Projects() {
       </div>
 
       <Dialog open={!!active} onOpenChange={() => setActive(null)}>
-        <DialogContent className="border-zinc-800 bg-zinc-950 text-zinc-100 sm:max-w-xl" data-testid="project-modal">
+        <DialogContent className="w-[calc(100%-2rem)] max-h-[85svh] overflow-y-auto rounded-2xl p-5 sm:p-6 border-zinc-800 bg-zinc-950 text-zinc-100 sm:max-w-xl" data-testid="project-modal">
           {active && (
             <>
-              <img src={active.image} alt={active.title} className="h-48 w-full rounded-lg object-cover" />
+              <img src={active.image} alt={active.title} className="h-40 sm:h-48 w-full rounded-lg object-cover" />
               <DialogHeader>
-                <DialogTitle className="font-display text-2xl text-zinc-50">{active.title}</DialogTitle>
-                <DialogDescription className="text-zinc-400 leading-relaxed">
+                <DialogTitle className="font-display text-xl sm:text-2xl text-zinc-50 text-left pr-6">{active.title}</DialogTitle>
+                <DialogDescription className="text-zinc-400 leading-relaxed text-left">
                   {active.description}
                 </DialogDescription>
               </DialogHeader>
@@ -109,7 +111,7 @@ export default function Projects() {
                   <span key={t} className="rounded-full bg-zinc-800 px-3 py-1 font-code text-xs text-zinc-300">{t}</span>
                 ))}
               </div>
-              <div className="flex gap-3 pt-2">
+              <div className="flex flex-wrap gap-3 pt-2">
                 <a
                   data-testid="project-modal-github"
                   href={active.github}

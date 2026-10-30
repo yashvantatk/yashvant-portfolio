@@ -34,8 +34,14 @@
     html {
         scroll-behavior: auto;
     }
+    html,
+    body {
+        overflow-x: hidden;
+    }
     body {
         @apply bg-background text-foreground;
+        -webkit-tap-highlight-color: transparent;
+        text-size-adjust: 100%;
         margin: 0;
         font-family: "Inter", sans-serif;
         -webkit-font-smoothing: antialiased;
@@ -94,6 +100,25 @@ pre {
 
 .animate-marquee {
     animation: marquee 45s linear infinite;
+}
+
+.no-scrollbar {
+    scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+@media (max-width: 640px) {
+    .bg-grid {
+        background-size: 40px 40px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .animate-marquee {
+        animation-duration: 120s;
+    }
 }
 
 .logo-ring {

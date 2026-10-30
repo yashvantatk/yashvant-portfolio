@@ -22,7 +22,7 @@ const SkillBar = ({ name, level }) => (
 
 export default function Skills() {
   return (
-    <section id="skills" data-testid="skills-section" className="py-20 lg:py-32 px-4 sm:px-8 lg:px-12 bg-zinc-950/40">
+    <section id="skills" data-testid="skills-section" className="py-16 sm:py-20 lg:py-32 px-4 sm:px-8 lg:px-12 bg-zinc-950/40">
       <div className="mx-auto max-w-7xl">
         <Reveal>
           <SectionLabel index="02">Skills Matrix</SectionLabel>

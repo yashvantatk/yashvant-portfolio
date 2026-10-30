@@ -52,7 +52,7 @@ function App() {
   return (
     <div className="App dark">
       <Portfolio />
-      <Toaster theme="dark" position="bottom-right" richColors />
+      <Toaster theme="dark" position="bottom-center" richColors />
     </div>
   );
 }
